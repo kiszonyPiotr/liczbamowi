@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Liczba Mówi – Wróżka Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Georgia', serif;
+            background: url('tlo_gry_liczba_mowi.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #f2d78d;
+        }
+
+        .overlay {
+            background-color: rgba(10, 0, 20, 0.7);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 2em;
+            text-align: center;
+        }
+
+        .form-box {
+            background: rgba(20, 10, 40, 0.85);
+            border: 2px solid #f2d78d;
+            border-radius: 12px;
+            padding: 2em;
+            box-shadow: 0 0 20px #f2d78d88;
+            max-width: 420px;
+            width: 100%;
+        }
+
+        input, button {
+            width: 90%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        input {
+            background: #1c1030;
+            color: #f2d78d;
+        }
+
+        button {
+            background: #f2d78d;
+            color: #1c1030;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #fff2b5;
+        }
+
+        .result {
+            margin-top: 1.5em;
+            font-size: 1.2em;
+            color: #ffeccc;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+            font-size: 2em;
+            color: #fff8dd;
+            text-shadow: 0 0 10px #f2d78d;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="content">
+        <div class="form-box">
+            <h1>LICZBA MÓWI – WRÓŻKA ONLINE</h1>
+            <input type="text" id="name" placeholder="Imię i nazwisko">
+            <input type="date" id="dob" placeholder="Data urodzenia">
+            <button onclick="calculate()">Odsłoń wróżbę</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <script>
+        const fortunes = {
+            1: "Liczba 1 – Jesteś liderem z natury. Twoja siła pcha Cię do przodu.",
+            2: "Liczba 2 – Jesteś duszą wrażliwą. Harmonia to Twoje przeznaczenie.",
+            3: "Liczba 3 – Kreatywność płynie przez Ciebie jak rzeka światła.",
+            4: "Liczba 4 – Stabilność i zaufanie to fundament Twojej duszy.",
+            5: "Liczba 5 – Wolność jest Twoim przeznaczeniem. Nie daj się zamknąć.",
+            6: "Liczba 6 – Miłość, opieka, oddanie – to Twoje duchowe dary.",
+            7: "Liczba 7 – Jesteś strażnikiem tajemnic. Twoja intuicja zna odpowiedź.",
+            8: "Liczba 8 – Potencjał do sukcesu i mocy. Ufaj swojej sile.",
+            9: "Liczba 9 – Jesteś starą duszą. Twoja mądrość uzdrawia innych."
+        };
+
+        function calculate() {
+            const dob = document.getElementById('dob').value;
+            if (!dob) {
+                document.getElementById('result').innerText = "Wprowadź datę urodzenia!";
+                return;
+            }
+
+            const digits = dob.replaceAll('-', '').split('').map(Number);
+            let sum = digits.reduce((a, b) => a + b, 0);
+            while (sum > 9) {
+                sum = sum.toString().split('').map(Number).reduce((a, b) => a + b, 0);
+            }
+
+            const fortune = fortunes[sum] || "Nie znaleziono wróżby.";
+            const name = document.getElementById('name').value || "Osobo";
+
+            document.getElementById('result').innerHTML =
+                `<strong>${name}</strong><br>Liczba życia: <strong>${sum}</strong><br><br>${fortune}`;
+        }
+    </script>
+</body>
+</html>
