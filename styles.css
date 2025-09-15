@@ -1,0 +1,228 @@
+:root {
+  --primary: #FFD300;
+  --secondary: #E6B800;
+  --accent: #000000;
+  --highlight: #FFF799;
+  --font-heading: 'Poppins', sans-serif;
+  --font-text: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-text);
+  color: var(--accent);
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  transition: color .3s;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--accent);
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .3s, color .3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.btn-secondary {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.section {
+  padding: 4rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.products {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.product-card {
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: transform .3s, background .3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  background: var(--secondary);
+}
+
+.product-card h3 {
+  margin: 1rem 0;
+}
+
+.footer {
+  background: var(--accent);
+  color: var(--primary);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--primary);
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+/* Split section */
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.split img {
+  flex: 1 1 300px;
+  border-radius: 1rem;
+}
+
+.split div {
+  flex: 1 1 300px;
+}
+
+.testimonials {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  text-align: center;
+}
+
+.testimonials p {
+  background: var(--highlight);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+/* Shop grid */
+.shop-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Contact form */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+input, textarea {
+  padding: 0.75rem;
+  border: 2px solid var(--accent);
+  border-radius: 0.5rem;
+}
+
+form button {
+  background: var(--primary);
+  color: var(--accent);
+  border: none;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+form button:hover {
+  background: var(--secondary);
+}
+
+/* Responsive nav */
+@media (max-width: 600px) {
+  nav {
+    display: none;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
